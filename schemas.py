@@ -41,8 +41,12 @@ class Product(BaseModel):
 # Add your own schemas here:
 # --------------------------------------------------
 
-# Note: The Flames database viewer will automatically:
-# 1. Read these schemas from GET /schema endpoint
-# 2. Use them for document validation when creating/editing
-# 3. Handle all database operations (CRUD) directly
-# 4. You don't need to create any database endpoints!
+class Booking(BaseModel):
+    """
+    Booking requests from the website
+    Collection name: "booking"
+    """
+    name: str = Field(..., description="Customer name")
+    phone: str = Field(..., description="Contact phone number")
+    service: str = Field(..., description="Requested service type")
+    message: Optional[str] = Field(None, description="Extra details from the customer")
